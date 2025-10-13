@@ -19,6 +19,11 @@ from google.auth.transport import requests as google_requests
 import requests
 from Model.standalone_predictor import predict_skin_condition
 import google.generativeai as genai
+from dotenv import load_dotenv
+
+# Load environment variables from backend/.env (development only). In production
+# prefer real environment variables or a secrets manager.
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -26,11 +31,11 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Changed to allow all origins
 
 # Configurations
-app.config['MONGO_URI'] = 'mongodb+srv://vaghelanikhil:NikhilVaghela121607@cluster0.qo1wq3w.mongodb.net/Cluster0?retryWrites=true&w=majority&appName=Cluster0'
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'agbvaljvhavmnbavhalfhuaefhbvchjvbvbavd')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI', '')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', '')
 
 # Google OAuth Configuration
-GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', '742123302553-88e0099nok872g2re7e5l9m0v0h2ldh0.apps.googleusercontent.com')
+GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', '')
 
 mongo = PyMongo(app)
 users = mongo.db.users
@@ -716,11 +721,11 @@ def ai_advisor():
    # === V V V ACTION REQUIRED: PASTE YOUR **NEW** API KEYS IN THE 2 LINES BELOW V V V ===
     # =================================================================================
 
-    # 1. Google Gemini API Key
-    GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "AIzaSyBwuWcgn7JwPMWR158XIlnKtZlvbcaBzlU")
+    # 1. Google Gemini API Key (must be set in environment or .env)
+    GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
 
-    # 2. OpenWeatherMap API Key
-    OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "e4c3add20d1fc9fcd7f42d153fd32acf")
+    # 2. OpenWeatherMap API Key (must be set in environment or .env)
+    OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "")
 
     # =================================================================================
     # === ^ ^ ^ ACTION REQUIRED: PASTE YOUR **NEW** API KEYS IN THE 2 LINES ABOVE ^ ^ ^ ===
@@ -729,7 +734,7 @@ def ai_advisor():
     # Configure the Gemini client
     try:
         genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel('gemini-pro-latest')
+        model = genai.GenerativeModel('gemini-2.5-flash')
     except Exception as e:
         print(f"Error configuring Gemini: {e}")
         return jsonify({"error": "AI service is not configured correctly."}), 500
