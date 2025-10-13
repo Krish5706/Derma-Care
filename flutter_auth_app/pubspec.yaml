@@ -1,0 +1,80 @@
+name: flutter_auth_app
+description: A modern Flutter authentication app with Flask backend
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # State management for authentication and UI updates
+  provider: ^6.1.2
+  # HTTP client for API calls to backend (e.g., /predict, /chat/history)
+  http: ^1.2.2
+  # Secure storage for JWT tokens
+  flutter_secure_storage: ^9.2.2
+  # Persistent storage for user preferences (e.g., city)
+  shared_preferences: ^2.3.0
+  # Email validation for registration/login
+  email_validator: ^3.0.0
+  # Toast notifications for user feedback
+  fluttertoast: ^8.2.8
+  # Image picker for skin disease prediction
+  image_picker: ^1.1.2
+  # File system access for image handling
+  path_provider: ^2.1.4
+  # SVG rendering for icons (e.g., Google sign-in)
+  flutter_svg: ^2.0.10
+  # Cupertino icons for iOS-style UI elements
+  cupertino_icons: ^1.0.8
+  # Google Sign-In for authentication
+  google_sign_in: ^6.2.1
+  google_sign_in_web: ^0.12.4+2
+  # Cryptographic utilities for password hashing
+  crypto: ^3.0.5
+  # Google Gemini AI for AI advisor responses
+  google_generative_ai: 0.4.7
+  # Markdown rendering for AI advisor responses and chat history
+  flutter_markdown: ^0.7.3
+  # Date/time formatting for timestamps in history
+  intl: ^0.20.0
+  # Sharing functionality for predictions or advice
+  share_plus: ^10.0.3
+
+  # AI/ML dependencies for skin disease prediction (commented out as prediction is server-side)
+  # tflite_flutter: ^0.10.4
+  # image: ^4.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # Generate app icons
+  flutter_launcher_icons: ^0.13.1
+  # Generate splash screen
+  flutter_native_splash: ^2.4.1
+
+# App icon configuration
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "lib/assets/icon.png"
+
+# Splash screen configuration
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "lib/assets/icon.png"
+  android: true
+  ios: true
+  web: false
+  android_gravity: center
+  ios_content_mode: scaleAspectFill
+  fill: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/assets/
+    - lib/assets/google.svg
+    - assets/models/

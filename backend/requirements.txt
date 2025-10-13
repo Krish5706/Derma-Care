@@ -1,0 +1,17 @@
+Flask
+flask-cors
+flask-pymongo
+PyJWT
+Werkzeug
+Pillow
+numpy
+# torch
+# torchvision
+opencv-python
+albumentations
+joblib
+google-auth
+pymongo
+dnspython
+google-generativeai>=0.8.4
+tensorflow-cpu==2.20.0

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "926476043404",
+    "project_id": "dermacare-ee697",
+    "storage_bucket": "dermacare-ee697.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926476043404:android:97df7b42a84d7837daa7a9",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuq4QDQjeCutFRkJAfLqnP4dJXeu1Qzl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
