@@ -20,11 +20,14 @@ import requests
 from Model.standalone_predictor import predict_skin_condition
 import google.generativeai as genai
 from dotenv import load_dotenv
+from download_model import ensure_model_exists
 
 # Load environment variables from backend/.env (development only). In production
 # prefer real environment variables or a secrets manager.
 load_dotenv()
 
+# Download ML model from Google Drive if not present (important for Railway deployment)
+ensure_model_exists()
 
 app = Flask(__name__)
 # Allow all origins for testing (use specific origins in production)
@@ -912,4 +915,5 @@ def submit_feedback(current_user):
         return jsonify({'message': f'Error submitting feedback: {str(e)}'}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

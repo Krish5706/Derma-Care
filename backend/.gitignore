@@ -1,0 +1,17 @@
+uploads/
+*.env
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.DS_Store
+.vscode/
+.idea/
+*.log
+# Large model file - downloaded from Google Drive at runtime
+Model/Ge_ResNet50V2_Model.keras
+
